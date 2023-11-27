@@ -101,7 +101,7 @@ var card = {
         });
         word.innerHTML = this.words[this.currentIndex].word;
         mean.innerHTML = this.words[this.currentIndex].mean;
-        current_idx.innerHTML = this.currentIndex+1;
+        current_idx.innerHTML = this.memorizedCnt;
         total_cnt.innerHTML = this.words.length;
     },
     next : function() {
@@ -128,7 +128,7 @@ var card = {
 
 word.innerHTML = card.words[0].word;
 mean.innerHTML = card.words[0].mean;
-current_idx.innerHTML = card.currentIndex+1;
+current_idx.innerHTML = card.memorizedCnt;
 total_cnt.innerHTML = card.words.length;
 
 const known = document.querySelector('.known');
@@ -140,7 +140,7 @@ known.addEventListener('click', () => {
     show_word();
     word.innerHTML = card.currentWord;
     mean.innerHTML = card.currentMean;
-    current_idx.innerHTML = card.currentIndex+1;
+    current_idx.innerHTML = card.memorizedCnt;
 });
 
 unknown.addEventListener('click', () => {
@@ -148,5 +148,5 @@ unknown.addEventListener('click', () => {
     show_word();
     word.innerHTML = card.currentWord;
     mean.innerHTML = card.currentMean;
-    current_idx.innerHTML = card.currentIndex+1;
+    current_idx.innerHTML = card.memorizedCnt;
 });
