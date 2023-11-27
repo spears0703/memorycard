@@ -1,14 +1,16 @@
 const word = document.querySelector('.word');
 const mean = document.querySelector('.mean');
+const current_idx = document.querySelector('.current_idx');
+const total_cnt = document.querySelector('.total_cnt');
 
 function show_word() {
     mean.style.display = 'none';
-    word.style.display = 'block';
+    word.style.display = 'flex';
 }
 
 function show_mean() {
     word.style.display = 'none';
-    mean.style.display = 'block';
+    mean.style.display = 'flex';
 }
 
 word.addEventListener('click', show_mean);
@@ -99,6 +101,8 @@ var card = {
         });
         word.innerHTML = this.words[this.currentIndex].word;
         mean.innerHTML = this.words[this.currentIndex].mean;
+        current_idx.innerHTML = this.memorizedCnt;
+        total_cnt.innerHTML = this.words.length;
     },
     next : function() {
         if(this.memorizedCnt == this.words.length) {
@@ -124,6 +128,8 @@ var card = {
 
 word.innerHTML = card.words[0].word;
 mean.innerHTML = card.words[0].mean;
+current_idx.innerHTML = card.memorizedCnt;
+total_cnt.innerHTML = card.words.length;
 
 const known = document.querySelector('.known');
 const unknown = document.querySelector('.unknown');
@@ -134,6 +140,7 @@ known.addEventListener('click', () => {
     show_word();
     word.innerHTML = card.currentWord;
     mean.innerHTML = card.currentMean;
+    current_idx.innerHTML = card.memorizedCnt;
 });
 
 unknown.addEventListener('click', () => {
@@ -141,4 +148,5 @@ unknown.addEventListener('click', () => {
     show_word();
     word.innerHTML = card.currentWord;
     mean.innerHTML = card.currentMean;
+    current_idx.innerHTML = card.memorizedCnt;
 });
