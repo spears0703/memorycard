@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메모리카드</title>
+    <script>
+        var httpRequest = new XMLHttpRequest();
+	    httpRequest.open('GET', 'http://ec2-54-210-76-47.compute-1.amazonaws.com:8080/card-package');
+	    httpRequest.responseType = "json";
+
+	    httpRequest.onreadystatechange = () => {
+
+		    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+			      if (httpRequest.status === 200) {
+			    	var result = httpRequest.response;
+			        
+                    const body = document.querySelector('body')
+
+                    result.forEach((element) => {
+                        const temp = document.createElement("a");
+                        temp.innerHTML = "<a href='main.html?id=" + element.id + "'>" + element.name + "</a><br>";
+                        body.append(temp);
+                    });
+
+			      } else {
+			        alert('Request Error!');
+			      }
+		    }
+        }
+
+	    httpRequest.send();
+    </script>
+</head>
+<body>
+</body>
+</html>
